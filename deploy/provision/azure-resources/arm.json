@@ -1,0 +1,79 @@
+
+{
+    "$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentTemplate.json#",
+    "contentVersion": "1.0.0.0",
+    "parameters": {
+          "environment": {
+              "type": "string",
+              "allowedValues": [
+                  "itest",
+                  "stest",
+                  "atest",
+                  "prod"
+              ]
+        },
+      // AppService Plan Params
+      "appServiceName": {
+          "type": "string",
+          "minLength": 1
+      },
+      "appServicePlanResourceGroup": {
+          "type": "string"
+      },
+      // WebApp Params
+      "webAppBaseName": {
+          "type": "string",
+          "minLength": 1
+      },
+      "webAppApiVersion": {
+          "type": "string",
+          "minLength": 1
+      },
+      "ftpsState": {
+        "type": "string",
+        "allowedValues": [
+          "AllAllowed",
+          "FtpsOnly",
+          "Disabled"
+        ],
+        "defaultValue": "Disabled"
+      },
+      "httpsOnly": {
+        "type": "bool",
+        "defaultValue": true
+      }
+    },
+    "variables": {
+          "webAppName": "[concat(parameters('webAppBaseName'), '-', parameters('environment'))]"
+      },
+    "resources": [
+      {
+        "name": "[variables('webAppName')]",
+        "type": "Microsoft.Web/sites",
+        "location": "[resourceGroup().location]",
+        "identity": {
+                  "type": "SystemAssigned"
+              },
+        "apiVersion": "[parameters('webAppApiVersion')]",
+        "tags": {
+          "[concat('hidden-related:', resourceId(parameters('appServicePlanResourceGroup'),'Microsoft.Web/serverfarms', parameters('appServiceName')))]": "Resource",
+          "displayName": "webApp"
+        },
+        "properties": {
+          "name": "[variables('webAppName')]",
+          "serverFarmId": "[resourceId(parameters('appServicePlanResourceGroup'),'Microsoft.Web/serverfarms', parameters('appServiceName'))]",
+          "siteConfig": {
+            "ftpsState": "[parameters('ftpsState')]"
+          },
+          "httpsOnly": "[parameters('httpsOnly')]"
+        }
+      }
+    ],
+    "outputs": {
+        "applicationName": {
+              "type": "string",
+              "value": "[variables('webAppName')]"
+          }
+    }
+  }
+  

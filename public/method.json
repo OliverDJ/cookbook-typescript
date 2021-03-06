@@ -1,0 +1,27 @@
+{
+    "Id": 1,
+    "Description": "Heat the milk to 20 degrees celcius",
+    "Title": "Heat milk",
+    "IngredientQuantities": [
+        {
+            "Ingredient": {
+                "Id": 2,
+                "Name": "Milk"
+            },
+            "Measurement": {
+                "Case": "Deciliter",
+                "Fields": [
+                    4.0
+                ]
+            }
+        }
+    ],
+    "Order": 1,
+    "Duration": {
+        "Case": "Minute",
+        "Fields": [
+            3.0
+        ]
+    },
+    "Info": ""
+}

@@ -1,0 +1,75 @@
+{
+    "Id": 2,
+    "Description": "Add the ingredients to a mixing bowl and incorporate thoroughly",
+    "Title": "Create beginning of dough",
+    "IngredientQuantities": [
+        {
+            "Ingredient": {
+                "Id": 1,
+                "Name": "Yeast"
+            },
+            "Measurement": {
+                "Case": "Gram",
+                "Fields": [
+                    25.0
+                ]
+            }
+        },
+        {
+            "Ingredient": {
+                "Id": 2,
+                "Name": "Milk"
+            },
+            "Measurement": {
+                "Case": "Deciliter",
+                "Fields": [
+                    4.0
+                ]
+            }
+        },
+        {
+            "Ingredient": {
+                "Id": 3,
+                "Name": "Flour"
+            },
+            "Measurement": {
+                "Case": "Gram",
+                "Fields": [
+                    500.0
+                ]
+            }
+        },
+        {
+            "Ingredient": {
+                "Id": 4,
+                "Name": "Salt"
+            },
+            "Measurement": {
+                "Case": "Teaspoon",
+                "Fields": [
+                    1.0
+                ]
+            }
+        },
+        {
+            "Ingredient": {
+                "Id": 5,
+                "Name": "Sugar"
+            },
+            "Measurement": {
+                "Case": "Teaspoon",
+                "Fields": [
+                    1.0
+                ]
+            }
+        }
+    ],
+    "Order": 2,
+    "Duration": {
+        "Case": "Minute",
+        "Fields": [
+            10.0
+        ]
+    },
+    "Info": ""
+}
