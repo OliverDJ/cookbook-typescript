@@ -46,4 +46,4 @@ stages:
           deploy:
             steps:
               - powershell: |
-                  write-host "deploying"
+                  write-host "deploying test"
