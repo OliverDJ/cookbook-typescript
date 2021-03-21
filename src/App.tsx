@@ -10,8 +10,11 @@ import React, { useContext, useEffect, useState } from 'react';
 import IRecipe from "./models/recipe"
 
 import Recipe from "./components/recipe"
+// import Category from "./components/category"
+import _renderCategories from "./components/category"
 
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import ICategory from './models/category';
 
 const add = (x: number): number =>{return x + 1}
 const subtract = (x: number): number =>{return x - 1}
@@ -32,13 +35,24 @@ const fetchRecipe = async (setM: React.Dispatch<React.SetStateAction<IRecipe>>) 
       )
 };
 
-
+const fetchCategories = async (setM: React.Dispatch<React.SetStateAction<ICategory[]>>) => {
+  const result = await fetch('local_api/categories.json')
+  // const result = await fetch('https://cookbook-test.azurewebsites.net/api/categories/')
+  const r = 
+    result.text()
+      .then((s) =>
+        {
+          const x: ICategory[] = JSON.parse(s)
+          console.log(x)
+          setM(x)
+          console.log(typeof(x))
+          
+        }
+      )
+};
 
 const defaultMethod : IRecipe= 
 {
-  // Title: "none",
-  // Description: "none",
-  // IngredientQuantities: []
   Id: 0,
   Name: "TBD",
   CreatedAt: new Date("2019-01-16"),
@@ -46,25 +60,38 @@ const defaultMethod : IRecipe=
   Spiciness: 0
 }
 
+
+const defaultCategoryList : ICategory[]= []
 function App() {
-  const [recipe, setRecipe] = useState<IRecipe>(defaultMethod)
+  // const [recipe, setRecipe] = useState<IRecipe>(defaultMethod)
+  const [categories, setCategories] = useState<ICategory[]>(defaultCategoryList)
   
-  // useEffect(() =>{
-  //   console.log("starting")
-  //   fetchData(setMethod)
-  // }, [])
+  useEffect(() =>{
+    console.log("starting")
+    fetchCategories(setCategories)
+  }, [])
 
   return (
     <div className="App">
       <header className="App-header">
-        <Button onClick={() => fetchRecipe(setRecipe)}>Pressme</Button>
-        <Recipe 
+        {/* <Button onClick={() => fetchRecipe(setRecipe)}>Pressme</Button> */}
+        {/* <Button onClick={() => fetchCategories(setCategories)}>Pressme</Button> */}
+        {_renderCategories(categories)}
+        {/* <Categories categories={categories}></Categories> */}
+        {/* {categories.map (
+          (c ) => 
+            <Category 
+              Id = {c.Id}
+              Name = {c.Name}
+              Description = {c.Description}
+            />) } */}
+        {/* <Recipe 
           Id ={recipe.Id}
           Name = {recipe.Name}
           CreatedAt = {recipe.CreatedAt}
           Methods = {recipe.Methods}
           Spiciness = {recipe.Spiciness}
-        />
+        /> */}
         {/* <Method Title={method.Title} Description={method.Description} IngredientQuantities={method.IngredientQuantities} ></Method> */}
       </header>
     </div>

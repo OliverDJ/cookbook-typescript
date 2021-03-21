@@ -72,9 +72,9 @@ const _rendeIngredient = (classes: any, iqL : IIngredientQuantity[]) => {
         return(
             <div >
                 <Divider variant="fullWidth" />
-                <Typography gutterBottom variant="body1" className={classes.ingredientText}>
+                {/* <Typography gutterBottom variant="body1" className={classes.ingredientText}>
                     Ingredients
-                </Typography>
+                </Typography> */}
                 <List className='ingredient-quantity-list'>
                     {iqL.map((iq) =>_renderIngredientQuantity(iq))}
                 </List>
@@ -102,9 +102,9 @@ const Method = (method: IMethod): JSX.Element => {
             </Grid>
         </div>
         <div className={classes.section2}>
-            <Typography color="textPrimary" variant="body1">
+            {/* <Typography color="textPrimary" variant="body1">
                     Description:
-            </Typography>
+            </Typography> */}
             <Typography color="textPrimary" variant="body2">
                     {method.Description}
             </Typography>
