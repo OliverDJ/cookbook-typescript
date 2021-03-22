@@ -1,0 +1,25 @@
+
+parameters:
+  buildScriptPath: ''
+  sourceFolder: ''
+  targetFolder: ''
+
+steps:
+- checkout: self
+
+- checkout: DevOpsArena
+
+- script: ${{ parameters.buildScriptPath }}
+  displayName: 'Build Script (Fake)'
+
+- task: CopyFiles@2
+  displayName: 'Copy Files from source to target'
+  inputs:
+    sourceFolder: ${{ parameters.sourceFolder }}
+    contents: '**'
+    targetFolder: ${{ parameters.targetFolder }}
+
+- task: PublishBuildArtifacts@1
+  inputs:
+    pathToPublish: ${{ parameters.targetFolder }}
+    artifactName: drop

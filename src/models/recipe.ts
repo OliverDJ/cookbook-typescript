@@ -11,4 +11,4 @@ interface IRecipe{
 } 
 
 
-export default IRecipe
+export default IRecipe;

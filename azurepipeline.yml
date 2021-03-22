@@ -12,11 +12,8 @@ variables:
   - template: configuration\collective.yml
 
 stages:
- 
-
   - stage: build_CI
     displayName: Build    
-    condition: in(dependencies.bump_and_changelog_publish_dotnet.result, 'Skipped')
     jobs:
       - job:
         pool:
@@ -46,4 +43,4 @@ stages:
           deploy:
             steps:
               - powershell: |
-                  write-host "deploying"
+                  write-host "deploying test"

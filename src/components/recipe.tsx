@@ -20,5 +20,4 @@ const Recipe = (recipe: IRecipe): JSX.Element => {
     );
 }
 
-
 export default Recipe

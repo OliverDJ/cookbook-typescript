@@ -11,7 +11,7 @@ open Fake.Core.TargetOperators
 open Fake.IO.Globbing.Operators
 
 // Properties
-let appName = "HealthHubUser"
+let appName = "cookbook-typescript"
 
 // root/
 let deployDir = __SOURCE_DIRECTORY__

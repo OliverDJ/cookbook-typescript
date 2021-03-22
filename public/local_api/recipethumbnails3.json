@@ -2,13 +2,6 @@
     {
         "Id": 1,
         "Name": "Pita Bread",
-        "CreatedBy": {
-            "Id": 1,
-            "Name": "Oliver",
-            "Email": "ded",
-            "CreatedAt": "2020-09-29T00:00:00"
-        },
-        "CreatedAt": "2020-09-29T00:00:00",
         "Duration": {
             "Seconds": 0.0,
             "Minutes": 3.0,

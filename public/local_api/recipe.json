@@ -1,0 +1,227 @@
+{
+    "Id": 1,
+    "Name": "Pita Bread",
+    "CreatedBy": {
+        "Id": 1,
+        "Name": "Oliver",
+        "Email": "ded",
+        "CreatedAt": "2020-09-29T00:00:00"
+    },
+    "CreatedAt": "2020-09-29T00:00:00",
+    "Methods": [
+        {
+            "Id": 1,
+            "Description": "Heat the milk to 20 degrees celcius",
+            "Title": "Heat milk",
+            "IngredientQuantities": [
+                {
+                    "Ingredient": {
+                        "Id": 2,
+                        "Name": "Milk"
+                    },
+                    "Measurement": {
+                        "Case": "Deciliter",
+                        "Fields": [
+                            4.0
+                        ]
+                    }
+                }
+            ],
+            "Order": 1,
+            "Duration": {
+                "Case": "Minute",
+                "Fields": [
+                    3.0
+                ]
+            },
+            "Info": ""
+        },
+        {
+            "Id": 2,
+            "Description": "Add the ingredients to a mixing bowl and incorporate thoroughly",
+            "Title": "Create beginning of dough",
+            "IngredientQuantities": [
+                {
+                    "Ingredient": {
+                        "Id": 1,
+                        "Name": "Yeast"
+                    },
+                    "Measurement": {
+                        "Case": "Gram",
+                        "Fields": [
+                            25.0
+                        ]
+                    }
+                },
+                {
+                    "Ingredient": {
+                        "Id": 2,
+                        "Name": "Milk"
+                    },
+                    "Measurement": {
+                        "Case": "Deciliter",
+                        "Fields": [
+                            4.0
+                        ]
+                    }
+                },
+                {
+                    "Ingredient": {
+                        "Id": 3,
+                        "Name": "Flour"
+                    },
+                    "Measurement": {
+                        "Case": "Gram",
+                        "Fields": [
+                            500.0
+                        ]
+                    }
+                },
+                {
+                    "Ingredient": {
+                        "Id": 4,
+                        "Name": "Salt"
+                    },
+                    "Measurement": {
+                        "Case": "Teaspoon",
+                        "Fields": [
+                            1.0
+                        ]
+                    }
+                },
+                {
+                    "Ingredient": {
+                        "Id": 5,
+                        "Name": "Sugar"
+                    },
+                    "Measurement": {
+                        "Case": "Teaspoon",
+                        "Fields": [
+                            1.0
+                        ]
+                    }
+                }
+            ],
+            "Order": 2,
+            "Duration": {
+                "Case": "Minute",
+                "Fields": [
+                    10.0
+                ]
+            },
+            "Info": ""
+        },
+        {
+            "Id": 3,
+            "Description": "Add the butter knead the dough for an additional 7 minutes",
+            "Title": "Butter the dough",
+            "IngredientQuantities": [
+                {
+                    "Ingredient": {
+                        "Id": 6,
+                        "Name": "Butter"
+                    },
+                    "Measurement": {
+                        "Case": "Tablespoon",
+                        "Fields": [
+                            1.0
+                        ]
+                    }
+                }
+            ],
+            "Order": 3,
+            "Duration": {
+                "Case": "Minute",
+                "Fields": [
+                    7.0
+                ]
+            },
+            "Info": ""
+        },
+        {
+            "Id": 4,
+            "Description": "Set the dough aside and let it proof for 1 hour",
+            "Title": "Proof the dough",
+            "IngredientQuantities": [],
+            "Order": 4,
+            "Duration": {
+                "Case": "Hour",
+                "Fields": [
+                    1.0
+                ]
+            },
+            "Info": ""
+        },
+        {
+            "Id": 5,
+            "Description": "Divide the dough into 8 equal sized peaces and form them into nice round balls",
+            "Title": "Divide and Conquer",
+            "IngredientQuantities": [],
+            "Order": 5,
+            "Duration": {
+                "Case": "Minute",
+                "Fields": [
+                    3.0
+                ]
+            },
+            "Info": ""
+        },
+        {
+            "Id": 6,
+            "Description": "Let the ball of dough rest for 15 minutes",
+            "Title": "Rest",
+            "IngredientQuantities": [],
+            "Order": 6,
+            "Duration": {
+                "Case": "Minute",
+                "Fields": [
+                    15.0
+                ]
+            },
+            "Info": ""
+        },
+        {
+            "Id": 7,
+            "Description": "Press the balls of dough to flat round disks (x cm high), and place on a sheet of paper on a cooking tray",
+            "Title": "Flatten and form",
+            "IngredientQuantities": [],
+            "Order": 7,
+            "Duration": {
+                "Case": "Minute",
+                "Fields": [
+                    5.0
+                ]
+            },
+            "Info": ""
+        },
+        {
+            "Id": 8,
+            "Description": "Let the disk of dough post proof on the cooking tray for 10 minutes",
+            "Title": "Post Proof",
+            "IngredientQuantities": [],
+            "Order": 8,
+            "Duration": {
+                "Case": "Minute",
+                "Fields": [
+                    10.0
+                ]
+            },
+            "Info": ""
+        },
+        {
+            "Id": 9,
+            "Description": "Place the cooking tray in the center of the oven at 250 degrees celcius for 10 minutes",
+            "Title": "Cook",
+            "IngredientQuantities": [],
+            "Order": 9,
+            "Duration": {
+                "Case": "Minute",
+                "Fields": [
+                    10.0
+                ]
+            },
+            "Info": "Conventional heating is preferred."
+        }
+    ],
+    "Spiciness": 0
+}

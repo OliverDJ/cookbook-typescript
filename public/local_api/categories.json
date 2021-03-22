@@ -1,0 +1,31 @@
+[
+    {
+        "Id": 3,
+        "Name": "American",
+        "Description": "Greasy saltiness"
+    },
+    {
+        "Id": 1,
+        "Name": "Indian",
+        "Description": "Spicy, flavourfill, rich"
+    },
+    {
+        "Id": 4,
+        "Name": "Italian",
+        "Description": "Clean, simple and delicious flavours from high quality ingredients"
+    },
+    {
+        "Id": 5,
+        "Name": "Mediterranean",
+        "Description": "Mildly spiced, olives, bread, wine and a squirt of lemon"
+    },
+    {
+        "Id": 0,
+        "Name": "Other"
+    },
+    {
+        "Id": 2,
+        "Name": "Thai",
+        "Description": "Beautiful balance between sweet, spicy, bitter and sour"
+    }
+]
