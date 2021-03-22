@@ -9,9 +9,9 @@ steps:
 # - checkout: DevOpsArena
 
 - powershell: |
-    write-host "buildScriptPath: $(buildScriptPath)"
-    write-host "sourceFolder: $(sourceFolder)"
-    write-host "targetFolder: $(targetFolder)"
+    write-host "buildScriptPath: ${{ parameters.buildScriptPath }}"
+    write-host "sourceFolder: ${{ parameters.sourceFolder }} "
+    write-host "targetFolder: ${{ parameters.targetFolder }} "
 - powershell: |
     dir
 
