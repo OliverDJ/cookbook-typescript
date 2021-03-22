@@ -3,16 +3,13 @@
     "contentVersion": "1.0.0.0",
     "parameters": {
         "environment": {
-        "value": "itest"
+        "value": "test"
         },
         "appServiceName": {
-        "value": "frontend-serviceplan"
-        },
-        "appServicePlanResourceGroup":{
-            "value": "AISHUEH-Health-Hub-Services-Test"
+        "value": "cookbook-serviceplan-test"
         },
         "webAppBaseName": {
-            "value": "selfservicefrontend"
+            "value": "cookbook-frontend"
         },
         "webAppApiVersion": {
             "value": "2015-08-01"

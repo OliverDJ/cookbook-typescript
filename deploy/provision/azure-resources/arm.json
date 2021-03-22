@@ -18,7 +18,8 @@
           "minLength": 1
       },
       "appServicePlanResourceGroup": {
-          "type": "string"
+          "type": "string",
+          "defaultValue": "[resourceGroup().name]" 
       },
       // WebApp Params
       "webAppBaseName": {
