@@ -38,14 +38,14 @@ const IngredientQuantity = (iq: IIngredientQuantity): JSX.Element => {
     return(
         <li className={classes.listItem}>
             <Paper  className={classes.root}>
-              <div>
+              {/* <div>
                 <i>{iq.Ingredient.Name}</i>
                 <p>{`${iq.Measurement.Fields[0]} ${iq.Measurement.Case}`}</p>
-              </div>
-                {/* <ListItemText
+              </div> */}
+                <ListItemText
                     classes={{  primary:classes.listItemText}}
                     primary={iq.Ingredient.Name}
-                    secondary={`${iq.Measurement.Fields[0]} ${iq.Measurement.Case}`} /> */}
+                    secondary={`${iq.Measurement.Fields[0]} ${iq.Measurement.Case}`} />
             </Paper>
         </li>
     )

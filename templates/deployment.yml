@@ -1,0 +1,70 @@
+parameters:
+  location: ''
+  outputFile: ''
+  pathToZip: ''
+  resourceGroup: ''
+  subscriptionId: ''
+  pathToArmTemplate: ''
+  azureSubscription: ''
+  overrideParameters: ''
+  pathToArmParameters: ''
+  pathToGenerateConfigJs: ''
+  pathToUploadScriptPs1: ''
+
+steps:
+- powershell: |
+    write-host location: ${{ parameters.location }}
+    write-host pathToZip: ${{ parameters.pathToZip }}
+    write-host resourceGroup: ${{ parameters.resourceGroup }}
+    write-host subscriptionId: ${{ parameters.subscriptionId }}
+    write-host pathToArmTemplate: ${{ parameters.pathToArmTemplate }}
+    write-host azureSubscription: ${{ parameters.azureSubscription }}
+    write-host overrideParameters: ${{ parameters.overrideParameters }}
+    write-host pathToArmParameters: ${{ parameters.pathToArmParameters }}
+    write-host pathToUploadScriptPs1: ${{ parameters.pathToUploadScriptPs1 }}
+    
+- task: AzureResourceManagerTemplateDeployment@3
+  displayName: 'ARM resource deployment: $(resourceGroup)'
+  inputs:
+    deploymentOutputs: armOutputs
+    location: ${{ parameters.location }}
+    csmFile: ${{ parameters.pathToArmTemplate }}
+    subscriptionId: ${{ parameters.subscriptionId }}
+    resourceGroupName: ${{ parameters.resourceGroup }}
+    csmParametersFile: ${{ parameters.pathToArmParameters }}
+    overrideParameters: ${{ parameters.overrideParameters }}
+    ConnectedServiceName: ${{ parameters.azureSubscription }}
+
+- task: AzurePowerShell@4
+  displayName: Expose arm output variables
+  inputs:
+    azureSubscription: HealthubAzureConnection
+    scriptType: 'InlineScript'
+    Inline: |
+      $var=ConvertFrom-Json '$(armOutputs)'
+      $value=$var.applicationName.value
+      Write-Host "##vso[task.setvariable variable=applicationName;]$value"
+      $value=$var.keyvaultName.value
+      Write-Host "##vso[task.setvariable variable=keyvaultName;]$value"
+    azurePowerShellVersion: 'latestVersion'
+    pwsh: true
+
+- powershell: |
+    write-host "applicationName = $(applicationName)"
+    write-host "keyvaultName = $(keyvaultName)"
+
+- task: AzureCLI@2
+  displayName: 'Create Configuration.js based on REACT_ env variables'
+  inputs:
+    scriptType: pscore
+    scriptPath: ${{ parameters.pathToGenerateConfigJs }}
+    arguments: '-Output ${{ parameters.outputFile }} -Artifact ${{ parameters.pathToZip }} -ResourceGroup ${{ parameters.resourceGroup }} -Subscription ${{ parameters.subscriptionId }}'
+    azureSubscription: ${{ parameters.azureSubscription }}
+
+- task: AzureCLI@2
+  displayName: Deploy
+  inputs:
+    scriptType: pscore
+    azureSubscription: ${{ parameters.azureSubscription }}
+    scriptPath: ${{ parameters.pathToUploadScriptPs1 }}
+    arguments: '-Application $(applicationName) -PathToZip ${{ parameters.pathToZip }} -ResourceGroup ${{ parameters.resourceGroup }} -Subscription ${{ parameters.subscriptionId }}'

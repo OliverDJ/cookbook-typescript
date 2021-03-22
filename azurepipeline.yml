@@ -44,3 +44,17 @@ stages:
             steps:
               - powershell: |
                   write-host "deploying test"
+
+              - template: templates\deployment.yml
+                parameters:
+                  location: $(location)
+                  outputFile: $(pathToConfOutput)
+                  pathToZip: $(pathToZip)
+                  resourceGroup: $(resourceGroup)
+                  subscriptionId: $(subscriptionId)
+                  pathToArmTemplate: $(pathToArmTemplate)
+                  azureSubscription: CookBookAzureConnection
+                  overrideParameters: ''
+                  pathToArmParameters: $(pathToArmParameters)
+                  pathToGenerateConfigJs: $(pathToGenerateConfigurationJs)
+                  pathToUploadScriptPs1: $(pathToUploadScript)
