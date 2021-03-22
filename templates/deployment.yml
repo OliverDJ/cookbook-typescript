@@ -5,7 +5,7 @@ parameters:
   resourceGroup: ''
   subscriptionId: ''
   pathToArmTemplate: ''
-  azureSubscription: ''
+  azureConnection: ''
   overrideParameters: ''
   pathToArmParameters: ''
   pathToGenerateConfigJs: ''
@@ -18,7 +18,7 @@ steps:
     write-host resourceGroup: ${{ parameters.resourceGroup }}
     write-host subscriptionId: ${{ parameters.subscriptionId }}
     write-host pathToArmTemplate: ${{ parameters.pathToArmTemplate }}
-    write-host azureSubscription: ${{ parameters.azureSubscription }}
+    write-host azureConnection: ${{ parameters.azureConnection }}
     write-host overrideParameters: ${{ parameters.overrideParameters }}
     write-host pathToArmParameters: ${{ parameters.pathToArmParameters }}
     write-host pathToUploadScriptPs1: ${{ parameters.pathToUploadScriptPs1 }}
@@ -33,12 +33,12 @@ steps:
     resourceGroupName: ${{ parameters.resourceGroup }}
     csmParametersFile: ${{ parameters.pathToArmParameters }}
     overrideParameters: ${{ parameters.overrideParameters }}
-    ConnectedServiceName: ${{ parameters.azureSubscription }}
+    ConnectedServiceName: ${{ parameters.azureConnection }}
 
 - task: AzurePowerShell@4
   displayName: Expose arm output variables
   inputs:
-    azureSubscription: HealthubAzureConnection
+    azureSubscription: ${{ parameters.azureConnection }}
     scriptType: 'InlineScript'
     Inline: |
       $var=ConvertFrom-Json '$(armOutputs)'
@@ -59,12 +59,12 @@ steps:
     scriptType: pscore
     scriptPath: ${{ parameters.pathToGenerateConfigJs }}
     arguments: '-Output ${{ parameters.outputFile }} -Artifact ${{ parameters.pathToZip }} -ResourceGroup ${{ parameters.resourceGroup }} -Subscription ${{ parameters.subscriptionId }}'
-    azureSubscription: ${{ parameters.azureSubscription }}
+    azureSubscription: ${{ parameters.azureConnection }}
 
 - task: AzureCLI@2
   displayName: Deploy
   inputs:
     scriptType: pscore
-    azureSubscription: ${{ parameters.azureSubscription }}
+    azureSubscription: ${{ parameters.azureConnection }}
     scriptPath: ${{ parameters.pathToUploadScriptPs1 }}
     arguments: '-Application $(applicationName) -PathToZip ${{ parameters.pathToZip }} -ResourceGroup ${{ parameters.resourceGroup }} -Subscription ${{ parameters.subscriptionId }}'

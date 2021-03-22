@@ -53,7 +53,7 @@ stages:
                   resourceGroup: $(resourceGroup)
                   subscriptionId: $(subscriptionId)
                   pathToArmTemplate: $(pathToArmTemplate)
-                  azureSubscription: CookBookAzureConnection
+                  azureConnection: CookBookAzureConnection
                   overrideParameters: ''
                   pathToArmParameters: $(pathToArmParameters)
                   pathToGenerateConfigJs: $(pathToGenerateConfigurationJs)
