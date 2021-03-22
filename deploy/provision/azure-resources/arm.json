@@ -6,9 +6,7 @@
           "environment": {
               "type": "string",
               "allowedValues": [
-                  "itest",
-                  "stest",
-                  "atest",
+                  "test",
                   "prod"
               ]
         },
