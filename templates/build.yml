@@ -5,8 +5,15 @@ parameters:
   targetFolder: ''
 
 steps:
-- checkout: self
+# - checkout: self
 # - checkout: DevOpsArena
+
+- powershell: |
+    write-host "buildScriptPath: $(buildScriptPath)"
+    write-host "sourceFolder: $(sourceFolder)"
+    write-host "targetFolder: $(targetFolder)"
+- powershell: |
+    dir
 
 - script: ${{ parameters.buildScriptPath }}
   displayName: 'Build Script (Fake)'
