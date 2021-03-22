@@ -1,0 +1,17 @@
+[
+    {
+        "Id": 1,
+        "Name": "Pita Bread",
+        "Duration": {
+            "Seconds": 0.0,
+            "Minutes": 3.0,
+            "Hours": 2.0
+        },
+        "Spiciness": 0,
+        "Category": {
+            "Id": 5,
+            "Name": "Mediterranean",
+            "Description": "Mildly spiced, olives, bread, wine and a squirt of lemon"
+        }
+    }
+]
