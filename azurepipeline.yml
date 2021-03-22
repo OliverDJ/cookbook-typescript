@@ -21,7 +21,12 @@ stages:
         steps:
         - powershell: |
             write-host "building"
-
+            
+        - template: templates\build.yml
+          parameters:
+            buildScriptPath: $(buildScriptPath)
+            sourceFolder: $(buildOutput)
+            targetFolder: $(downloadPath)
 # -----------------------------------------------------------------------------------------
 # -                                  Deploy Development                                   -
 # -----------------------------------------------------------------------------------------
