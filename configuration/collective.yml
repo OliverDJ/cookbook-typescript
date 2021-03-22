@@ -5,10 +5,10 @@ variables:
   vmImage: 'windows-latest'
 
   # Build
-  buildScriptPath: $(Build.Repository.LocalPath)\$(repositoryName)\build.cmd
-  buildOutput: '$(pathToSelf)\deploy\build\artifacts'
+  buildScriptPath: $(Build.Repository.LocalPath)\build.cmd
+  buildOutput: '$(Build.Repository.LocalPath)\deploy\build\artifacts'
   downloadPath: $(System.ArtifactsDirectory)
-  pathToSelf: '$(Build.Repository.LocalPath)\$(repositoryName)'
+  # pathToSelf: '$(Build.Repository.LocalPath)\$(repositoryName)'
   
   # Deploy
   agentFolder: '$(Agent.WorkFolder)\1'
