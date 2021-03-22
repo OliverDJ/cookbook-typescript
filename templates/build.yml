@@ -6,8 +6,7 @@ parameters:
 
 steps:
 - checkout: self
-
-- checkout: DevOpsArena
+# - checkout: DevOpsArena
 
 - script: ${{ parameters.buildScriptPath }}
   displayName: 'Build Script (Fake)'
@@ -23,3 +22,5 @@ steps:
   inputs:
     pathToPublish: ${{ parameters.targetFolder }}
     artifactName: drop
+
+
