@@ -16,3 +16,6 @@ variables:
   provisionDir: '$(dropDir)\provision'
   pathToZip: '$(dropDir)\$(repositoryName).zip'
   pathToArmTemplate: '$(dropDir)\azure-resources\arm.json'
+
+  pathToGenerateConfigurationJs: '$(dropDir)\generateConfigJs.ps1'
+  pathToUploadScript: '$(dropDir)\upload.ps1'
