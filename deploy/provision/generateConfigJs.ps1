@@ -39,7 +39,7 @@ function addValueToString([string]$acc, [string]$key, [object]$value ){
     return $acc
 }
 
-function generateJavaScriptCode([string]$instrumentationKey){
+function generateJavaScriptCode(){ #[string]$instrumentationKey){
     $PREPREFIX="REACT_"
     $PREFIX = "$PREPREFIX*"
     $secrets = Get-ChildItem env:${PREFIX}
@@ -49,15 +49,15 @@ function generateJavaScriptCode([string]$instrumentationKey){
         $value =  $item.Value
         $string = addValueToString $string $newkey $value 
     }
-    $string += "`t `"INSTRUMENTATION_KEY`" : `"$instrumentationKey`" "
+    # $string += "`t `"INSTRUMENTATION_KEY`" : `"$instrumentationKey`" "
     $string += "`n}"
     return $string
 }
 
 
 
-$ik = getInstrumentationKey $resourcegroup $subscription
-$javaScript = generateJavaScriptCode $ik
+# $ik = getInstrumentationKey $resourcegroup $subscription
+$javaScript = generateJavaScriptCode #$ik
 
 write-host "$javaScript"
 $javaScript | Set-Content -Path $output 
