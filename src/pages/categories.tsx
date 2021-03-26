@@ -32,7 +32,6 @@ const CategoriesPage = () =>{
     }, [])
     return (
         <div>
-            Categories
             {_renderCategories(categories)}
         </div>)
 }

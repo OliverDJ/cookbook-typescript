@@ -19,13 +19,11 @@ import ICategory from './models/category';
 
 import { BrowserRouter as Router, Route, Switch, Link} from 'react-router-dom';
 
-
-
-
 import Home from './pages/home'
 import Categories from './pages/categories'
 import RecipesByCategory from './pages/recipes-by-category'
 import RecipePage from './pages/recipe'
+import NavBar from './components/NavBar'
 
 const _onClickF = (setState: React.Dispatch<React.SetStateAction<number>>, f:(c: number) => number, x: number) => {setState(f(x))}
 
@@ -37,15 +35,8 @@ function App() {
   return (
     <Router>
       <div className="App">
+          <NavBar />
         <header className="App-header">
-          <ul>
-            <li>
-              <Link to="/">Home</Link>
-            </li>
-            <li>
-              <Link to="/categories">Categories</Link>
-            </li>
-          </ul>
           <div>
             <Switch>
               <Route exact path= "/" component = {Home}/>

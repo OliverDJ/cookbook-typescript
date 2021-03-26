@@ -42,8 +42,8 @@ const Category = (category: ICategory): JSX.Element => {
                 <CardActionArea>
                     <CardMedia
                         className={classes.media}
-                        image="/static/images/food.jpg"
-                        title="Contemplative Reptile"
+                        image={category.ImageUrl}
+                        title={`"image of ${category.Name} food"`}
                         />
                     <CardContent>
                         <Typography gutterBottom variant="h5" component="h2">
@@ -76,6 +76,7 @@ const _renderCategories = (categories: ICategory[]): JSX.Element => {
                             Id = {c.Id}
                             Name = {c.Name}
                             Description = {c.Description}
+                            ImageUrl = {c.ImageUrl}
                         />
                     </Grid>
                     )}
