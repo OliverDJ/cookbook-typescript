@@ -1,4 +1,4 @@
 variables:
   resourceGroup: cookbook
-  subscriptionId: 948c9544-f9b5-40dd-a04f-7dd4220097db
+  subscriptionId: 6e6c7cb4-694c-4f35-80b0-31fe418d5f48
   pathToArmParameters: '$(dropDir)\azure-resources\parameters\test.json' 
