@@ -3,7 +3,11 @@
 
 import IMethod from "../models/method"
 import IIngredientQuantity from "../models/ingredientquantity"
+import ITemperatureInfo from "../models/temperatureinfo"
 import IngredientQuantity from "./ingredientquantity"
+
+import TemperatureInfo from "../components/method/temperature"
+import TimeInfo from "../components/method/time"
 
 import List from '@material-ui/core/List';
 import { makeStyles } from '@material-ui/core/styles';
@@ -15,6 +19,7 @@ import Typography from '@material-ui/core/Typography';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faClock } from '@fortawesome/free-solid-svg-icons'
 
+
 const useStyles = makeStyles((theme) => ({
     root: {
         // width: '100%',
@@ -22,10 +27,15 @@ const useStyles = makeStyles((theme) => ({
 
         backgroundColor: theme.palette.background.paper,
     },
-    clock: {
-        display: 'flex',
+    grid:{
         justifyContent: 'center',
-        alignItems: 'center'
+        textAlign: 'left'
+    },
+    infoGrid:{
+        justifyContent: 'flex-end',
+    },
+    gridItem:{
+        margin: theme.spacing(0.2,1)
     },
     section1: {
       textAlign: 'left',
@@ -36,8 +46,12 @@ const useStyles = makeStyles((theme) => ({
         margin: theme.spacing(1, 3, 4, 3),
     },
     section3: {
-        margin: theme.spacing(0.2,3),
+        margin: theme.spacing(1,3),
         // backgroundColor: 'red'
+    },
+    title:{
+        padding: theme.spacing(1, 3, 1, 3),
+        // color: 'red'
     },
     emptyDiv: {
         margin: '7px',
@@ -82,40 +96,81 @@ const _rendeIngredient = (classes: any, iqL : IIngredientQuantity[]) => {
         )
     }
 }
+const _shouldRenderTemp = (t?: ITemperatureInfo) => {
+    if(t == null){
+        return false
+    }
+    else{
+       return true
+    }
+}
+
 const Method = (method: IMethod): JSX.Element => {
     const classes = useStyles();
     return (
     <div className={classes.root}>
-        <div className={classes.section1}>
-            <Grid container alignItems="flex-start" >
-                <Grid item xs>
-                    <Typography gutterBottom variant="h6" className={classes.methodTitle}>
-                        {method.Title}
+         <Grid container className={classes.grid} >
+            <Grid item xs={8}>
+                <Typography color="textPrimary" variant="h6" className={classes.title}>
+                    {method.Title}
+                </Typography>
+                <div className={classes.section2}>
+                    <Typography color="textPrimary" variant="body2">
+                            {method.Description}
                     </Typography>
-                </Grid>
-                <Grid item className={classes.clock}>
-                    <Typography gutterBottom variant="body2">
-                        10 min
-                    </Typography>
-                    <FontAwesomeIcon icon={faClock} className="time-icon" size="xs"/>
+                </div>
+            </Grid>
+            <Grid item xs={4} >
+                <Grid container className={classes.infoGrid}>
+                    <Grid item className={classes.gridItem}>
+                        {method.TemperatureInfo != null && <TemperatureInfo temperatureInput={method.TemperatureInfo} />}
+                    </Grid>
+                    <Grid item className={classes.gridItem}>
+                        { method.Duration != null && <TimeInfo timeInfo={method.Duration} /> }
+                    </Grid>
                 </Grid>
             </Grid>
-        </div>
-        <div className={classes.section2}>
-            {/* <Typography color="textPrimary" variant="body1">
-                    Description:
-            </Typography> */}
-            <Typography color="textPrimary" variant="body2">
-                    {method.Description}
-            </Typography>
-        </div>
-        <div className={classes.section3}>
-            {_rendeIngredient(classes, method.IngredientQuantities)}
-
+         </Grid>
+         <div className={classes.section3}>
+                {_rendeIngredient(classes, method.IngredientQuantities)}
         </div>
     </div>
     );
-
 }
+
+// const Method = (method: IMethod): JSX.Element => {
+//     const classes = useStyles();
+//     return (
+//     <div className={classes.root}>
+//         <div className={classes.section1}>
+//             <Grid container alignItems="flex-start" >
+//                 <Grid item xs>
+//                     {/* {_shouldRenderTemp(method.TemperatureInfo) &&  <TemperatureInfo temperatureInput={method.TemperatureInfo} />)} */}
+//                     {method.TemperatureInfo != null && <TemperatureInfo temperatureInput={method.TemperatureInfo} />}
+//                     {/* {method.TemperatureInfo != null ? <TemperatureInfo temperatureInput={method.TemperatureInfo} /> : <Default/>} */}
+//                 </Grid>
+//                 <Grid item className={classes.clock}>
+//                     <Typography gutterBottom variant="body2">
+//                         {method.Duration?.Unit}
+//                     </Typography>
+//                     <FontAwesomeIcon icon={faClock} className="time-icon" size="xs"/>
+//                 </Grid>
+//             </Grid>
+//         </div>
+//         <div className={classes.section2}>
+//             {/* <Typography color="textPrimary" variant="body1">
+//                     Description:
+//             </Typography> */}
+//             <Typography color="textPrimary" variant="body2">
+//                     {method.Description}
+//             </Typography>
+//         </div>
+//         <div className={classes.section3}>
+//             {_rendeIngredient(classes, method.IngredientQuantities)}
+
+//         </div>
+//     </div>
+//     );
+// }
 
 export default Method;

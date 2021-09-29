@@ -29,7 +29,7 @@ const useStyles = makeStyles((theme) => ({
     }
   }));
 
-
+const color = '#0f7b90'
 const NavBar = () => {
     const history = useHistory();
     const classes = useStyles();
@@ -39,7 +39,7 @@ const NavBar = () => {
     } 
     return (
       <div className={classes.root}>
-        <AppBar position="static">
+        <AppBar position="static"  style={{ background: color }}>
           <Toolbar>
             <IconButton edge="start" className={classes.menuButton} color="inherit" aria-label="menu">
               <MenuIcon />

@@ -8,6 +8,7 @@ import _renderCategories from "../components/category"
 const fetchCategories = async (setM: React.Dispatch<React.SetStateAction<ICategory[]>>) => {
     // const result = await fetch('local_api/categories.json')
     const result = await fetch('https://cookbook-test.azurewebsites.net/api/categories/')
+    
     const r = 
         result.text()
         .then((s) =>

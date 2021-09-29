@@ -9,8 +9,8 @@ import _renderRecipeThumbnails from "../components/recipethumbnail"
 import { write } from 'fs';
 
 const fetchRecipes = async (name : string, setM: React.Dispatch<React.SetStateAction<IRecipeThumbnail[]>>) => {
-    // const result = await fetch('../local_api/recipethumbnails.json')
-    const result = await fetch(`https://cookbook-test.azurewebsites.net/api/recipes/category/${name}`)
+    const result = await fetch('../local_api/recipethumbnails.json')
+    // const result = await fetch('/local_api/new-recipe-with-temp.json')
     console.log("-> name ", name)
     const r = 
         result.text()
